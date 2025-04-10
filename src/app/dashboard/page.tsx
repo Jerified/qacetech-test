@@ -1,15 +1,22 @@
 // app/(dashboard)/dashboard/page.tsx
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function DashboardPage() {
   const roles = [
-    { title: "Nursing Assistant" },
-    { title: "Web Designer" },
-    { title: "Dog Trainer" },
-    { title: "Marketing Coordinator", active: true },
-    { title: "Medical Assistant" },
-    { title: "President of Sales" },
+    { title: "Nursing Assistant", icon: "/icons/nurse.svg" },
+    { title: "Web Designer", icon: "/icons/web.svg" },
+    { title: "Dog Trainer",   icon: "/icons/assist.svg" },
+    { title: "Marketing Coordinator", icon: "/icons/nurse.svg", active: true },
+    { title: "Nursing Assistant", icon: "/icons/nurse.svg" },
+    { title: "Web Designer", icon: "/icons/web.svg" },
+    { title: "Dog Trainer",   icon: "/icons/assist.svg" },
+    { title: "Nursing Assistant", icon: "/icons/nurse.svg" },
+    { title: "Web Designer", icon: "/icons/web.svg" },
+    { title: "Dog Trainer",   icon: "/icons/assist.svg" },
+    { title: "Medical Assistant",  icon: "/icons/web.svg"  },
+    { title: "President of Sales",  icon: "/icons/assist.svg"  },
   ];
 
   return (
@@ -28,16 +35,18 @@ export default function DashboardPage() {
               role.active ? "bg-red-100 border border-red-200" : ""
             } hover:shadow-md transition duration-300`}
           >
-            <CardContent className="p-4">
+            <CardContent className="p-4 flex flex-col gap-4">
+            {role.icon && <Image src={role.icon} alt="icon" width={48} height={48} />}
+            <div className="">
               <div className="font-semibold mb-2">{role.title}</div>
               <p className="text-xs text-gray-500">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore.
               </p>
+            </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
+        ))}      </div>
     </>
   );
 }
